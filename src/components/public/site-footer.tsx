@@ -33,6 +33,14 @@ export function SiteFooter() {
           >
             Catalogo
           </Link>
+          <a
+            href="https://delarosaleyva.shop"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-11 items-center rounded-md border border-slate-200 bg-stone-50 px-3 text-xs font-black uppercase tracking-wide text-slate-700 transition hover:-translate-y-0.5 hover:border-teal-500 hover:bg-teal-50 hover:text-teal-800"
+          >
+            Creado por delarosaleyva.shop
+          </a>
         </div>
       </div>
     </footer>
