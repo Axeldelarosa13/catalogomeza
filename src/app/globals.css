@@ -1,0 +1,362 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fbfaf7;
+  --foreground: #0f172a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6.5rem;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+.mobile-scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.mobile-scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+::selection {
+  background: #0f766e;
+  color: white;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  outline-color: #0f766e;
+}
+
+input,
+select,
+textarea {
+  font-size: 16px;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0.35deg);
+  }
+}
+
+@keyframes shine-pass {
+  0% {
+    transform: translateX(-130%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(170%) skewX(-18deg);
+  }
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(16 185 129 / 0.28);
+  }
+  50% {
+    box-shadow: 0 0 0 9px rgb(16 185 129 / 0);
+  }
+}
+
+@keyframes sweep-line {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(-22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-right {
+  from {
+    opacity: 0;
+    transform: translateX(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes hero-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: saturate(1);
+  }
+  50% {
+    transform: scale(1.025);
+    filter: saturate(1.08);
+  }
+}
+
+@keyframes border-flow {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 300% 50%;
+  }
+}
+
+@keyframes halo-shift {
+  0%,
+  100% {
+    transform: translate3d(-10%, -10%, 0) scale(1);
+    opacity: 0.38;
+  }
+  50% {
+    transform: translate3d(8%, 6%, 0) scale(1.12);
+    opacity: 0.68;
+  }
+}
+
+@keyframes card-lift-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion-fade-up {
+    animation: fade-up 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .motion-fade-left {
+    animation: fade-left 0.76s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .motion-fade-right {
+    animation: fade-right 0.76s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .motion-float {
+    animation: float-soft 5.8s ease-in-out infinite;
+  }
+
+  .motion-pulse-ring {
+    animation: soft-pulse 2.4s ease-in-out infinite;
+  }
+
+  .motion-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .motion-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 -45%;
+    width: 38%;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(255 255 255 / 0.42),
+      transparent
+    );
+    animation: shine-pass 4.8s ease-in-out infinite;
+  }
+
+  .motion-sweep {
+    background-size: 200% 200%;
+    animation: sweep-line 7s linear infinite;
+  }
+
+  .motion-hero-breathe {
+    animation: hero-breathe 12s ease-in-out infinite;
+  }
+
+  .motion-marquee {
+    animation: marquee 28s linear infinite;
+  }
+
+  .motion-marquee-slow {
+    animation: marquee 42s linear infinite;
+  }
+
+  .motion-border-flow {
+    background-size: 300% 300%;
+    animation: border-flow 6s linear infinite;
+  }
+
+  .motion-scroll {
+    animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .motion-card-lift {
+    animation: card-lift-in 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @supports (animation-timeline: view()) {
+    .motion-scroll {
+      opacity: 0;
+      animation-timeline: view();
+      animation-range: entry 8% cover 32%;
+    }
+  }
+}
+
+@media (max-width: 640px) and (prefers-reduced-motion: no-preference) {
+  .motion-marquee {
+    animation-duration: 24s;
+  }
+
+  .motion-marquee-slow {
+    animation-duration: 34s;
+  }
+
+  .hover-tilt:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.soft-grid-bg {
+  background-image:
+    linear-gradient(rgb(15 23 42 / 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(15 23 42 / 0.055) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 8.25rem;
+  }
+
+  .soft-grid-bg {
+    background-size: 24px 24px;
+  }
+}
+
+.card-glow {
+  box-shadow:
+    0 18px 60px rgb(15 23 42 / 0.08),
+    0 1px 0 rgb(255 255 255 / 0.8) inset;
+}
+
+.animated-border {
+  position: relative;
+}
+
+.animated-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(120deg, #0f766e, #f59e0b, #e11d48, #0f766e);
+  background-size: 300% 300%;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animated-border::before {
+    animation: border-flow 6s linear infinite;
+  }
+
+  .hover-tilt:hover {
+    transform: translateY(-6px) rotate(-0.35deg);
+  }
+}
+
+.hero-product-card::before {
+  content: "";
+  position: absolute;
+  inset: -35%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 25% 20%, rgb(16 185 129 / 0.34), transparent 28%),
+    radial-gradient(circle at 80% 70%, rgb(245 158 11 / 0.24), transparent 24%);
+  filter: blur(22px);
+}
+
+.hero-product-card > * {
+  position: relative;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-product-card::before {
+    animation: halo-shift 9s ease-in-out infinite;
+  }
+}
